@@ -1,13 +1,29 @@
 .Home {
   overflow: hidden auto;
   height: 100%;
-  background: linear-gradient(#191d32 0 50%, #282f44 50% 100%);
+  background: #282f44;
   color: #2a1e36;
   scroll-behavior: smooth; /* stylelint-disable-line plugin/no-unsupported-browser-features */
   overscroll-behavior: contain; /* stylelint-disable-line plugin/no-unsupported-browser-features */
 
+  & > .hero {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    height: 92%;
+    height: 45svh; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+
+    & > .heroImage {
+      min-width: min(120em, 100vw);
+      background-size: cover;
+    }
+  }
+
   & > .card {
-    border: 1px solid #f3efe0;
+    width: 92%;
+    margin: 1rem auto;
+    border-radius: 10px;
     background: #191d32;
     color: #f3efe0;
 
@@ -28,6 +44,40 @@
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         text-align: center;
       }
+
+      & > .contact {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: center;
+        margin: auto;
+        padding: 1rem 0.5rem;
+
+        & > span {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: min(20em, 100%);
+
+          & > svg {
+            height: 1.5em;
+            margin-right: 0.5em;
+            fill: #f3efe0;
+          }
+
+          & > a {
+            color: #f3efe0;
+            font-weight: 600;
+            font-size: min(100vw / 22, 1.1rem);
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -36,7 +86,7 @@
     height: 25em;
     background-position: center;
     background-size: cover;
-    filter: drop-shadow(0 0 0.3em #f3efe0);
+    filter: drop-shadow(0 0 0.3em #2a1e36);
 
     & > div {
       position: relative;

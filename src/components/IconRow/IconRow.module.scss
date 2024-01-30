@@ -1,4 +1,6 @@
 .IconRow {
+  position: relative;
+  top: 80%;
   display: flex;
   justify-content: space-around;
   width: min(66em, calc(100vw - 4em));
@@ -9,7 +11,6 @@
   background: #282f4470;
   filter: drop-shadow(0 0 0.75em #282f44);
   transform: scale(1);
-  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 
   & > a {
@@ -41,7 +42,7 @@
       transform: scale(1.05);
 
       & > svg {
-        filter: drop-shadow(0 0 0.7em #f3efe0);
+        filter: drop-shadow(0 0 0.2em #f3efe0);
         fill: #fff;
 
         & > path {
