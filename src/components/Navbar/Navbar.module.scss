@@ -54,10 +54,12 @@
       transition: all 0.3s ease-out;
 
       & > .brand {
+        // background-image: url('/icon192.png');
         width: 4.5rem;
-        background-image: url('/icon192.png');
+        border-radius: 100%; //TODO: Replace with icon
+        background: #e08dac; //TODO: Replace with icon
         color: #00000000;
-        transform: translateY(-14px);
+        transform: scale(0.6) translateY(-14px);
       }
 
       & > a {
