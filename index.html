@@ -15,7 +15,7 @@
     <meta property="og:image" content="/banner.jpg" />
     <title>Sameer Bham</title>
 
-    <!-- Global styles -->
+    <!-- Styles -->
     <style>
       * {
         box-sizing: border-box;
@@ -28,6 +28,25 @@
         margin: 0;
       }
     </style>
+
+    <!-- SPA workaround for GH Pages (https://github.com/rafgraph/spa-github-pages) -->
+    <script type="text/javascript">
+      (l => {
+        if (l.search[1] === '/') {
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) +
+              l.search
+                .slice(1)
+                .split('&')
+                .map(s => s.replace(/~and~/g, '&'))
+                .join('?') +
+              l.hash
+          );
+        }
+      })(window.location);
+    </script>
   </head>
 
   <body>

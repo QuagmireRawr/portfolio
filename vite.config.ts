@@ -43,7 +43,10 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       }),
       checker({ typescript: true, overlay: false, enableBuild: true }),
       createHtmlPlugin({
-        entry: '/src/index.tsx', // resolve(fileURLToPath(new URL('.', import.meta.url)), 'src/index.tsx'),
+        pages: [
+          { filename: 'index.html', template: 'index.html', entry: '/src/index.tsx' },
+          { filename: '404.html', template: '404.html' },
+        ],
         minify: {
           collapseBooleanAttributes: true, collapseWhitespace: true, decodeEntities: true, minifyCSS: true,
           minifyJS: true, minifyURLs: true, removeComments: true, removeEmptyAttributes: true,
