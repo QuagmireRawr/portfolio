@@ -10,7 +10,7 @@ export const Home = () => (
       <div
         id="top"
         class={styles.heroImage}
-        style={{ height: '100%', 'background-image': `url(${img0})`, 'background-position': '50% 15%' }}
+        style={{ height: '100%', 'background-image': `url(${img0})`, 'background-position': '45% 15%' }}
       >
         <Follow />
       </div>
@@ -33,7 +33,7 @@ export const Home = () => (
       </div>
     </div>
 
-    <div class={styles.socials} style={{ 'background-image': `url(${img2})`, 'background-position': '90% 35%' }} />
+    <div class={styles.socials} style={{ 'background-image': `url(${img2})`, 'background-position': '50% 35%' }} />
 
     <div id="contact" class={styles.card}>
       <div>
