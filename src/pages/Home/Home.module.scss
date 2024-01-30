@@ -1,0 +1,46 @@
+.Home {
+  overflow: hidden auto;
+  height: 100%;
+  background: linear-gradient(#191d32 0 50%, #282f44 50% 100%);
+  color: #2a1e36;
+  scroll-behavior: smooth; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+  overscroll-behavior: contain; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+
+  & > .card {
+    border: 1px solid #f3efe0;
+    background: #191d32;
+    color: #f3efe0;
+
+    & > div {
+      display: flex;
+      flex-flow: column;
+      row-gap: 1rem;
+      width: clamp(45%, 70rem, 100%);
+      margin: auto;
+      padding: 2rem;
+      font-size: 1.1em;
+
+      & > h2 {
+        margin: 1rem 0;
+        color: #f3efe0;
+        font-weight: 400;
+        font-size: 3.3rem;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        text-align: center;
+      }
+    }
+  }
+
+  .socials {
+    width: 100%;
+    height: 25em;
+    background-position: center;
+    background-size: cover;
+    filter: drop-shadow(0 0 0.3em #f3efe0);
+
+    & > div {
+      position: relative;
+      top: 2em;
+    }
+  }
+}

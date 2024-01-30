@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Input */
+    "moduleResolution": "Bundler",
+    "types": ["vite/client", "vitest/globals"],
+    "isolatedModules": true,
+    "skipLibCheck": true,
+
+    /* Output */
+    "module": "ES2022",
+    "target": "ES2021",
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    /* Strict */
+    "strict": true,
+    /*"exactOptionalPropertyTypes": true,*/
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    /*"noUncheckedIndexedAccess": true,*/
+    "forceConsistentCasingInFileNames": true,
+
+    /* Support for JSON, synthetic default imports, experimental decorators, & JSX */
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+
+    /* Path Aliases */
+    "paths": { "@/*": ["./src/*"] },
+  },
+  "include": ["src"],
+  "ts-node": { "transpileOnly": true },
+}

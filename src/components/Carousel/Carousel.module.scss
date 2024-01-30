@@ -1,0 +1,54 @@
+.Carousel {
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  overflow: hidden;
+  height: 30em;
+
+  & > .slider {
+    display: flex;
+    grid-area: 1 / 1 / 4 / 2;
+    overflow: auto hidden;
+    background: #282f44;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+    scrollbar-width: none; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+    // -ms-overflow-style: none; // Support IE 10-11
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > div {
+      min-width: min(120em, 100vw);
+      background-size: cover;
+      filter: drop-shadow(0 0 0.3em #282f44);
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+  }
+
+  & > .controls {
+    z-index: 1;
+    display: flex;
+    grid-area: 2 / 1 / 3 / 2;
+    gap: 0.3em;
+    margin: auto;
+    padding: 0.1em;
+    border-radius: 10px;
+    background: #00000010;
+
+    & > button {
+      width: 2.5rem;
+      height: 0.4rem;
+      border-radius: 10px;
+      background: #ffffffc0;
+      outline: 0 solid #00000000;
+      transition: all 0.4s ease-out;
+
+      &.active {
+        background: #fffffff0;
+        outline: 1px solid #ffffffc0;
+      }
+    }
+  }
+}

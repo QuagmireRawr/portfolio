@@ -1,0 +1,58 @@
+.IconRow {
+  display: flex;
+  justify-content: space-around;
+  width: min(66em, calc(100vw - 4em));
+  margin: auto;
+  padding: 0.3em;
+  border: 1px solid #282f44;
+  border-radius: 10px;
+  background: #282f4470;
+  filter: drop-shadow(0 0 0.75em #282f44);
+  transform: scale(1);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+
+  & > a {
+    transition: transform 0.1s ease-in-out;
+
+    & > svg,
+    & > img {
+      height: 2.2em;
+      filter: drop-shadow(0 0 0.2em #282f44);
+      fill: #191d32;
+      transition: all 0.2s ease-out;
+
+      @media screen and (max-width: 600px) {
+        height: 1.75em;
+      }
+
+      & > path {
+        fill: #fff;
+      }
+
+      & > rect,
+      & > circle {
+        fill: none;
+        stroke: #fff;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+
+      & > svg {
+        filter: drop-shadow(0 0 0.7em #f3efe0);
+        fill: #fff;
+
+        & > path {
+          fill: #191d32;
+        }
+
+        & > rect,
+        & > circle {
+          stroke: #191d32;
+        }
+      }
+    }
+  }
+}
