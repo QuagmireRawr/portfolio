@@ -10,13 +10,13 @@ export const Home = () => (
       <div
         id="top"
         class={styles.heroImage}
-        style={{ height: '90%', 'background-image': `url(${img0})`, 'background-position': '50% 15%' }}
+        style={{ height: '100%', 'background-image': `url(${img0})`, 'background-position': '50% 15%' }}
       >
         <Follow />
       </div>
     </div>
 
-    <div id="about" class={styles.card}>
+    <div id="about" class={styles.card} style={{ background: '#191d32' }}>
       <div>
         <h2>about</h2>
         <div>

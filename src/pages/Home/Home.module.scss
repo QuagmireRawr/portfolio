@@ -2,7 +2,7 @@
   overflow: hidden auto;
   height: 100%;
   background: #282f44;
-  color: #2a1e36;
+  color: #282f44;
   scroll-behavior: smooth; /* stylelint-disable-line plugin/no-unsupported-browser-features */
   overscroll-behavior: contain; /* stylelint-disable-line plugin/no-unsupported-browser-features */
 
@@ -21,10 +21,10 @@
   }
 
   & > .card {
-    width: 92%;
-    margin: 1rem auto;
+    // width: 92%;
+    // margin: 1rem 0;
     border-radius: 10px;
-    background: #191d32;
+    // background: #191d32;
     color: #f3efe0;
 
     & > div {
