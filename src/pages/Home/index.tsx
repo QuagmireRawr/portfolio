@@ -7,11 +7,7 @@ import styles from '@/pages/Home/Home.module.scss';
 export const Home = () => (
   <div class={styles.Home}>
     <div class={styles.hero}>
-      <div
-        id="top"
-        class={styles.heroImage}
-        style={{ height: '100%', 'background-image': `url(${img0})`, 'background-position': '45% 15%' }}
-      >
+      <div id="top" class={styles.heroImage} style={{ 'background-image': `url(${img0})` }}>
         <Follow />
       </div>
     </div>
@@ -33,9 +29,9 @@ export const Home = () => (
       </div>
     </div>
 
-    <div class={styles.socials} style={{ 'background-image': `url(${img2})`, 'background-position': '50% 35%' }} />
+    <div class={styles.socials} style={{ 'background-image': `url(${img2})` }} />
 
-    <div id="contact" class={styles.card}>
+    <div id="contact" class={styles.card} style={{ background: '#282f44' }}>
       <div>
         <h2>contact me</h2>
         <span class={styles.contact}>
