@@ -17,21 +17,25 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
     envDir: 'env',
     build: {
       rollupOptions: {
-        output: { entryFileNames: '[hash:6].js', chunkFileNames: '[hash:6].js', assetFileNames: '[hash:6][extname]' }, //prettier-ignore
-        treeshake: { tryCatchDeoptimization: false },
+        output: { entryFileNames: '[hash:6].js', chunkFileNames: '[hash:6].js', assetFileNames: '[hash:6][extname]' },
+        treeshake: { propertyReadSideEffects: false, tryCatchDeoptimization: false },
       },
       target: 'es2020',
       minify: 'terser',
       cssMinify: 'lightningcss',
       terserOptions: {
-        compress: { drop_console: true, drop_debugger: true, arguments: true, ecma: 2020, hoist_funs: true, passes: 3, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
-        format: { comments: false, ecma: 2020, wrap_func_args: false },
+        ecma: 2020,
+        compress: { drop_console: true, drop_debugger: true, arguments: true, hoist_funs: true, passes: 3, pure_getters: true, unsafe: true, unsafe_arrows: true, unsafe_comps: true, unsafe_symbols: true }, //prettier-ignore
+        format: { comments: false, wrap_func_args: false },
         mangle: { properties: { regex: /^(?:observers|observerSlots|comparator|updatedAt|owned|route|score|when|sourceSlots|fn|cleanups|owner|pure|suspense|inFallback|isRouting|beforeLeave|Provider|preloadRoute|outlet|utils|explicitLinks|actionBase|resolvePath|branches|routerState|parsePath|renderPath|originalPath|effects|tState|disposed|sensitivity|navigatorFactory|keyed)$/ } }, //prettier-ignore
       },
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
     plugins: [
-      solid({ babel: { plugins: [['@babel/plugin-transform-typescript', { optimizeConstEnums: true, isTSX: true }]] } }), //prettier-ignore
+      solid({
+        solid: { omitNestedClosingTags: true },
+        babel: { plugins: [['@babel/plugin-transform-typescript', { optimizeConstEnums: true, isTSX: true }]] },
+      }),
       svg({
         floatPrecision: 2,
         plugins: [
