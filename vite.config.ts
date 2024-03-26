@@ -1,7 +1,8 @@
+import { readFileSync as read, readdirSync, writeFileSync as write } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import { checker } from 'vite-plugin-checker';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
@@ -32,11 +33,24 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       modulePreload: { polyfill: false }, // Delete this line if outputting more than 1 chunk
     },
     plugins: [
+      {
+        name: 'vite-plugin-optimize-solid-css-modules',
+        enforce: 'pre',
+        transform(code, id) {
+          if (/\.tsx$/.test(id))
+            code = code.replace(
+              /class=\{([a-zA-Z '"`[\].-]+|(?:`(?:\$\{[a-zA-Z '"`[\].-]+\}\s*)+)`)\}/g, // eslint-disable-line regexp/no-useless-non-capturing-group
+              'class={/*@once*/$1}' //TODO: Tighten regex to avoid store. Allow 1 ./space?
+            );
+          return { code, map: null };
+        },
+      } as Plugin,
       solid({
         solid: { omitNestedClosingTags: true },
         babel: { plugins: [['@babel/plugin-transform-typescript', { optimizeConstEnums: true, isTSX: true }]] },
       }),
       svg({
+        multipass: true,
         floatPrecision: 2,
         plugins: [
           { name: 'preset-default', params: { overrides: { convertPathData: { noSpaceAfterFlags: true }, removeViewBox: false } } }, //prettier-ignore
@@ -68,6 +82,15 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
           brotliSize: true,
           filename: resolve(fileURLToPath(new URL('.', import.meta.url)), 'dist/analyze.html'),
         }),
+      {
+        name: 'vite-plugin-minify-assets',
+        enforce: 'post',
+        writeBundle: ({ dir }) => void setTimeout(() => {
+          const files = readdirSync(dir!);
+          files.filter(x => x.endsWith('.json')).forEach(x => write(`${dir}/${x}`, JSON.stringify(JSON.parse(read(`${dir}/${x}`, 'utf-8'))), { encoding: 'utf-8' }))
+          files.filter(x => x.endsWith('.css') || x.endsWith('.js')).forEach(x => write(`${dir}/${x}`, read(`${dir}/${x}`, 'utf-8').trim(), { encoding: 'utf-8' }))
+        }), //prettier-ignore
+      } as Plugin,
     ].filter(Boolean),
     resolve: { alias: { '@': resolve(fileURLToPath(new URL('.', import.meta.url)), 'src') }, dedupe: ['solid-js'] },
     test: {
@@ -78,6 +101,7 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       deps: { optimizer: { web: { exclude: ['solid-js'] } } },
       coverage: {
         reporter: ['text', 'lcov'],
+        include: ['src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
         exclude: configDefaults.coverage.exclude!.concat(['src/__test__', 'src/services/mock', 'src/index.tsx']),
       },
     },

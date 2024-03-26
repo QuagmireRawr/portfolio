@@ -1,0 +1,23 @@
+// https://coolors.co/191d32-282f44-e08dac-f3efe0-f45b69
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  -webkit-tap-highlight-color: transparent; // Remove gray highlights on links (iOS)
+  -webkit-text-size-adjust: 100%; // Keep font-size after rotation (iOS)
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}

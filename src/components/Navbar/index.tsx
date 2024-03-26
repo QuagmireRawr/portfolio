@@ -5,7 +5,7 @@ export const Navbar = () => {
   const [hideMenu, setHideMenu] = createSignal(true);
 
   return (
-    <div class={`${styles.Navbar} ${hideMenu() ? styles.hidden : ''}`}>
+    <nav class={hideMenu() ? styles.hidden : ''}>
       <div class={styles.links}>
         <a href="#top" class={styles.brand} aria-label="Return to Top">
           Sameer Bham
@@ -14,6 +14,6 @@ export const Navbar = () => {
         <a href="#contact">contact me</a>
       </div>
       <button onClick={() => setHideMenu(p => !p)}>^</button>
-    </div>
+    </nav>
   );
 };

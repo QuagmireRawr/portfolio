@@ -15,25 +15,11 @@
     <meta property="og:image" content="/banner.jpg" />
     <title>Sameer Bham</title>
 
-    <!-- Styles -->
-    <style>
-      * {
-        box-sizing: border-box;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-    </style>
-
     <!-- SPA workaround for GH Pages (https://github.com/rafgraph/spa-github-pages) -->
     <script type="text/javascript">
       (l => {
         if (l.search[1] === '/') {
-          window.history.replaceState(
+          history.replaceState(
             null,
             null,
             l.pathname.slice(0, -1) +
@@ -45,7 +31,7 @@
               l.hash
           );
         }
-      })(window.location);
+      })(location);
     </script>
   </head>
 
