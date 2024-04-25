@@ -25,10 +25,6 @@ Sameer's Portfolio
 ### Build
 1. 🔨 `yarn build` - build for production & output to `dist/` with Vite (Esbuild)
 
-### Test
-1. 🧪 `yarn test` - run unit tests & generate coverage report in `coverage/`
-1. 🧾 `yarn test:ui` - open unit test UI
-
 ### Lint
 1. 🧹 `yarn lint` - lint files in `src/`
 1. 🧼 `yarn lint:fix` - lint files in `src/` & fix automatically
@@ -37,11 +33,9 @@ Sameer's Portfolio
 </details>
 <details><summary><h2>Files</h2></summary>
 
-- `coverage/` - Unit test coverage
 - `dist/` - Code output
 - `public/` - Static files
 - `src/` - Project source code
-  - `__tests__/` - Unit test files
   - `assets/` - assets
   - `components/` - UI components
   - `pages/` - Pages
@@ -69,7 +63,6 @@ Linting is provided by [ESLint](https://github.com/eslint/eslint) with a custom 
 - [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint)
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 - [eslint-plugin-regexp](https://github.com/ota-meshi/eslint-plugin-regexp)
-- [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)
 - [eslint-plugin-solid](https://github.com/solidjs-community/eslint-plugin-solid)
 
 ---

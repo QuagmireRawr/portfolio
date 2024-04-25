@@ -1,10 +1,8 @@
-/// <reference types="vitest" />
 /// <reference types="vite/client" />
 
 /* Environment Variables */
 interface ImportMetaEnv {
-  MODE: 'production' | 'development' | 'test';
-  TEST: true | undefined;
+  MODE: 'production' | 'development';
 }
 
 interface ImportMeta {

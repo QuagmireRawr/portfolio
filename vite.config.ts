@@ -9,7 +9,6 @@ import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import sassDts from 'vite-plugin-sass-dts';
 import solid from 'vite-plugin-solid';
 import svg from 'vite-plugin-svgo';
-import { configDefaults } from 'vitest/config';
 
 export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
   const ENV = { ...process.env, ...loadEnv(mode, 'env', '') };
@@ -93,17 +92,5 @@ export default ({ mode }: { mode: 'production' | 'development' | 'test' }) => {
       } as Plugin,
     ].filter(Boolean),
     resolve: { alias: { '@': resolve(fileURLToPath(new URL('.', import.meta.url)), 'src') }, dedupe: ['solid-js'] },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      include: ['src/**/*.{test,spec}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
-      setupFiles: [resolve(fileURLToPath(new URL('.', import.meta.url)), 'src/__test__/setupTests.ts')],
-      deps: { optimizer: { web: { exclude: ['solid-js'] } } },
-      coverage: {
-        reporter: ['text', 'lcov'],
-        include: ['src/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
-        exclude: configDefaults.coverage.exclude!.concat(['src/__test__', 'src/services/mock', 'src/index.tsx']),
-      },
-    },
   });
 };

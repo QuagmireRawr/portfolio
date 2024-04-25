@@ -16,12 +16,6 @@
     {
       "type": "node-terminal",
       "request": "launch",
-      "name": "Test",
-      "command": "yarn test"
-    },
-    {
-      "type": "node-terminal",
-      "request": "launch",
       "name": "Lint",
       "command": "yarn lint"
     },
